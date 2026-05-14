@@ -2,10 +2,8 @@
 FROM gradle:8.5-jdk17 AS build
 WORKDIR /app
 
-# Copy build files first for better caching
-COPY build.gradle.kts settings.gradle.kts ./
-COPY gradle ./gradle
-COPY gradlew ./
+# Copy everything first (gradle cache will still work)
+COPY . .
 
 # Build the application
 RUN chmod +x gradlew
