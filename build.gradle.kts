@@ -37,7 +37,7 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers:1.19.7")
     testImplementation("org.testcontainers:postgresql:1.19.7")
     testImplementation("org.testcontainers:junit-jupiter:1.19.7")
-    testImplementation("com.wiremock:wiremock-standalone:3.5.4")
+    testImplementation("org.wiremock:wiremock-standalone:3.0.4")
 
     // contract-pact-testing
     testImplementation("au.com.dius.pact.consumer:junit5:4.6.6")
