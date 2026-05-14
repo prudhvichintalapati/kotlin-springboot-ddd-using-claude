@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "description": "Enable/disable Claude Code skill modules for this project",
+  "skills": {
+    "architecture-clean-ddd": true,
+    "hexagonal-ports-adapters": true,
+    "gherkin-behavior-specs": false,
+    "cucumber-step-definitions": false,
+    "unit-test-tdd": false,
+    "adapter-integration-tester": false,
+    "infrastructure-as-code-validator": false,
+    "contract-pact-testing": false
+  }
+}

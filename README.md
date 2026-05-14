@@ -190,15 +190,51 @@ export DATABASE_DRIVER=org.postgresql.Driver
 ./gradlew bootRun
 ```
 
-## Testing
+## Claude Code Skillsets
 
-The project includes unit tests in `src/test/kotlin/`. Run tests with:
+This project includes configurable skill modules that Claude uses when implementing features. See [`.claude/skills/claude-code-skills.md`](.claude/skills/claude-code-skills.md) for detailed skill definitions.
 
-```bash
-./gradlew test
+### Enable/Disable Skills
+
+Edit `.claude/skills/enabled.json` to enable or disable specific capabilities:
+
+```json
+{
+  "skills": {
+    "architecture-clean-ddd": true,
+    "hexagonal-ports-adapters": true,
+    "gherkin-behavior-specs": true,
+    "cucumber-step-definitions": true,
+    "unit-test-tdd": true,
+    "adapter-integration-tester": true,
+    "infrastructure-as-code-validator": true,
+    "contract-pact-testing": true
+  }
+}
 ```
 
-The test demonstrates how to test the application layer with a mock repository, keeping tests fast and independent of infrastructure.
+### Available Skills
+
+| Skill | Description | Default |
+|-------|-------------|---------|
+| `architecture-clean-ddd` | Entities, Value Objects, Aggregate Roots | ✅ Enabled |
+| `hexagonal-ports-adapters` | Inbound/Outbound Ports, infrastructure isolation | ✅ Enabled |
+| `gherkin-behavior-specs` | Given/When/Then scenarios | ❌ Disabled |
+| `cucumber-step-definitions` | Map Gherkin to application services | ❌ Disabled |
+| `unit-test-tdd` | Domain logic validation with mocks | ❌ Disabled |
+| `adapter-integration-tester` | DB repositories, external API tests (TestContainers) | ❌ Disabled |
+| `infrastructure-as-code-validator` | Terraform/Pulumi cloud resources | ❌ Disabled |
+| `contract-pact-testing` | Consumer-driven contract testing | ❌ Disabled |
+
+### Production Grade Extras
+
+When you enable additional skills, Claude will automatically use them:
+
+- **unit-test-tdd**: Creates unit tests alongside domain logic with 90%+ coverage
+- **gherkin-behavior-specs**: Adds behavior scenarios in `.feature` files
+- **adapter-integration-tester**: Adds TestContainers-based integration tests
+- **contract-pact-testing**: Sets up Pact contract tests for API boundaries
+- **infrastructure-as-code-validator**: Creates Terraform/Pulumi infrastructure code
 
 ## License
 

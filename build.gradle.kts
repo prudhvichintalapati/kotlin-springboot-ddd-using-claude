@@ -26,6 +26,22 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+    // === Optional Skills Dependencies ===
+
+    // gherkin-behavior-specs + cucumber-step-definitions
+    testImplementation("io.cucumber:cucumber-spring:7.18.0")
+    testImplementation("io.cucumber:cucumber-junit:7.18.0")
+
+    // adapter-integration-tester (TestContainers)
+    testImplementation("org.testcontainers:testcontainers:1.19.7")
+    testImplementation("org.testcontainers:postgresql:1.19.7")
+    testImplementation("org.testcontainers:junit-jupiter:1.19.7")
+    testImplementation("com.wiremock:wiremock-standalone:3.5.4")
+
+    // contract-pact-testing
+    testImplementation("au.com.dius.pact.consumer:junit5:4.6.6")
+    testImplementation("au.com.dius.pact.provider:junit5spring:4.6.6")
 }
 
 kotlin {
